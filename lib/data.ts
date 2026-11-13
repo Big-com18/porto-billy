@@ -8,6 +8,7 @@ export const LINKS: [string, string][] = [
 
 export const NAV: [string, string][] = [
   ["Tentang", "#about"],
+  ["Foto", "#foto"],
   ["Framework", "#frameworks"],
   ["Skill", "#skills"],
   ["Project", "#projects"],
