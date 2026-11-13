@@ -6,6 +6,7 @@ import Transitions from "@/components/Transitions";
 import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
+import Photo from "@/components/sections/Photo";
 import Frameworks from "@/components/sections/Frameworks";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <About />
+      <Photo />
       <Frameworks />
       <Skills />
       <div className="stackwrap" data-stack><Projects /></div>
