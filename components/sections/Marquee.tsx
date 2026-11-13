@@ -3,8 +3,8 @@ import { useRef } from "react";
 import Logo from "@/components/ui/Logo";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
-const A: [string, string?][] = [["Front-End"], ["Next.js", "nextjs"], ["QA"], ["React", "react"], ["Dream On"], ["Vue", "vue"], ["TypeScript", "typescript"], ["Flutter", "flutter"]];
-const B = ["DREAM ON", "FRONT-END", "DREAM ON", "QA"];
+const A: [string, string?][] = [["Front-End"], ["Next.js", "nextjs"], ["QA"], ["React", "react"], ["Interaktif"], ["Vue", "vue"], ["TypeScript", "typescript"], ["Flutter", "flutter"]];
+const B = ["FRONT-END", "INTERAKTIF", "QA", "ANIMASI"];
 
 /** Dua pita hitam berlawanan arah. Makin kencang scroll, makin kencang jalannya. */
 export default function Marquee() {

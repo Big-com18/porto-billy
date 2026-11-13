@@ -3,12 +3,12 @@ export default function Mark() {
     <svg className="mark" viewBox="0 0 48 48" aria-hidden="true">
       <defs>
         <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#c3b5f5" />
-          <stop offset="1" stopColor="#f4b3a6" />
+          <stop offset="0" stopColor="#c5bdeb" />
+          <stop offset="1" stopColor="#e8c3d2" />
         </linearGradient>
       </defs>
-      <rect width="48" height="48" rx="15" fill="url(#mg)" />
-      <text x="24" y="32" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="22" fill="#2a2740">BA</text>
+      <circle cx="24" cy="24" r="24" fill="url(#mg)" />
+      <text x="24" y="31" textAnchor="middle" fontFamily="Georgia, serif" fontSize="21" fill="#09090b">BA</text>
     </svg>
   );
 }

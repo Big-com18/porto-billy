@@ -25,7 +25,7 @@ export default function Journey() {
   }, { scope: root });
 
   return (
-    <section id="journey" ref={root}>
+    <section id="journey" className="stack" data-stack ref={root}>
       <h2 className="journey-title"><span className="line"><Chars text="Perjalanan" /></span><span className="line"><Chars text="sejauh ini" /></span></h2>
       <div className="jw">
         <div className="jl"><i /><div className="run" /></div>

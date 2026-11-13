@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 
-const font = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-main", display: "swap" });
+const display = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-display", display: "swap" });
+const main = Manrope({ subsets: ["latin"], variable: "--font-main", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Billy Andreas — Front-End Developer",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" className={font.variable}>
+    <html lang="id" className={`${display.variable} ${main.variable}`}>
       <body>{children}</body>
     </html>
   );
