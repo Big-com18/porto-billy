@@ -35,25 +35,40 @@ export default function Hero() {
         onRelease() { gsap.to(this.target, { scale: 1, duration: 0.5, ease: "elastic.out(1,.5)" }); },
       });
 
+      // cahaya lembut mengikuti kursor di hero
+      const gx = gsap.quickTo(".hero .glow", "x", { duration: 1.2, ease: "power3" });
+      const gy = gsap.quickTo(".hero .glow", "y", { duration: 1.2, ease: "power3" });
+      const heroMove = (e: MouseEvent) => { const r = root.current!.getBoundingClientRect(); gx(e.clientX - r.left); gy(e.clientY - r.top); };
+      root.current!.addEventListener("mousemove", heroMove);
+
+      // huruf nama berubah warna pastel saat dilewati kursor, lalu pelan kembali
+      const PAL = ["#c5bdeb", "#e8c3d2", "#bcd8c6", "#b9d0e8", "#ecdfb5"];
+      const offs = gsap.utils.toArray<HTMLElement>(".hero h1 .ch").map((c) => {
+        const on = () => { gsap.killTweensOf(c, "color"); gsap.timeline().to(c, { color: gsap.utils.random(PAL), duration: 0.2 }).to(c, { color: "#f4f2f8", duration: 1.4, delay: 0.4 }); };
+        c.addEventListener("mouseenter", on);
+        return () => c.removeEventListener("mouseenter", on);
+      });
+
       gsap.to(".hero h1", { yPercent: -10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-      return () => { off(); drags.forEach((d) => d.kill()); };
+      return () => { off(); drags.forEach((d) => d.kill()); offs.forEach((f) => f()); root.current?.removeEventListener("mousemove", heroMove); };
     });
   }, { scope: root });
 
   return (
     <header className="hero" id="top" ref={root}>
+      <div className="orbs" aria-hidden="true"><i className="orb o1" /><i className="orb o2" /><i className="orb o3" /><i className="glow" /></div>
       <div className="stickers">
         {FRAMEWORKS.map((f, i) => (
           <div className="stk" key={f.n} style={{ left: `${POS[i][0]}%`, top: `${POS[i][1]}%` }}>
-            <div className="stk-in" style={{ background: f.c }}><Logo n={f.l} size={34} />{f.n}</div>
+            <div className="stk-in" style={{ backgroundColor: f.c }}><Logo n={f.l} size={34} />{f.n}</div>
           </div>
         ))}
       </div>
       <div className="hero-top">
         <span className="pill fade"><i />Terbuka untuk magang Front-End Developer</span>
-        <p className="sub fade">Saya bikin web yang rapi, cepat, dan terasa hidup. Coba seret stiker framework di kanan.</p>
+        <p className="sub fade">Saya bikin web yang rapi, cepat, dan terasa hidup. Seret stiker framework di kanan, atau lewatkan kursor di atas nama saya.</p>
         <div className="cta fade">
-          <a className="btn dark" href="#projects">Lihat project</a>
+          <a className="btn solid" href="#projects">Lihat project</a>
           <a className="btn" href="#contact">Hubungi saya</a>
         </div>
       </div>

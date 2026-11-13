@@ -2,10 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import Chars from "@/components/ui/Chars";
 import Logo from "@/components/ui/Logo";
+import { InstagramIcon, LinkedInIcon } from "@/components/ui/Icons";
 import { EMAIL, LINKS } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-const TILE = ["var(--pink)", "var(--butter)", "var(--mint)"];
+const TILE = ["var(--sand)", "var(--mint)", "var(--blue)"];
 const handle = (u: string) => u.replace(/\/$/, "").split("/").pop();
 
 export default function Contact() {
@@ -32,7 +33,6 @@ export default function Contact() {
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.from(".contact h2 .ch", { yPercent: 120, stagger: 0.03, duration: 1, ease: "expo.out", scrollTrigger: { trigger: ".contact", start: "top 60%" } });
       gsap.from(".mail-card, .soc", { y: 50, opacity: 0, stagger: 0.1, duration: 0.9, ease: "expo.out", clearProps: "transform,opacity", scrollTrigger: { trigger: ".ct-grid", start: "top 85%" } });
-      gsap.to(".dream .row", { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
 
       // efek magnet: elemen sedikit menempel ke kursor
       const mags = gsap.utils.toArray<HTMLElement>(".mag").map((el) => {
@@ -50,28 +50,24 @@ export default function Contact() {
   }, { scope: root });
 
   return (
-    <section className="contact" id="contact" ref={root}>
+    <section className="contact stack" id="contact" data-stack ref={root}>
       <p className="lead">Punya brief, kolaborasi, atau mau ngobrol soal magang? Kirim saja, saya balas secepatnya.</p>
       <h2><span className="line"><Chars text="Ayo ngobrol." /></span></h2>
 
       <div className="ct-grid">
-        <button type="button" className="mail-card mag" data-s="0.06" onClick={copy}>
+        <button type="button" className="mail-card spot mag" data-s="0.06" onClick={copy}>
           <span className="mc-label">Email</span>
           <span className="mc-mail">{EMAIL}</span>
           <span className="mc-act">{copied ? "Tersalin ✓" : "Klik untuk salin"}</span>
         </button>
         <div className="soc-grid">
           {LINKS.map(([l, h], i) => (
-            <a className="soc mag" data-s="0.12" key={l} href={h} target="_blank" rel="noreferrer" style={{ background: TILE[i % TILE.length] }}>
-              <span>{l === "GitHub" && <Logo n="github" size={28} />}<span><b>{l}</b><small>{handle(h)}</small></span></span>
+            <a className="soc mag" data-s="0.12" key={l} href={h} target="_blank" rel="noreferrer" style={{ "--c": TILE[i % TILE.length] } as React.CSSProperties}>
+              <span>{l === "GitHub" ? <Logo n="github" size={28} /> : <i className="ic">{l === "Instagram" ? <InstagramIcon /> : <LinkedInIcon />}</i>}<span><b>{l}</b><small>{handle(h)}</small></span></span>
               <span className="arr">↗</span>
             </a>
           ))}
         </div>
-      </div>
-
-      <div className="dream" aria-hidden="true">
-        <div className="row out">{Array.from({ length: 8 }, (_, i) => <span key={i}>DREAM ON</span>)}</div>
       </div>
 
       <footer>
