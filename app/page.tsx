@@ -1,6 +1,7 @@
 import Loader from "@/components/Loader";
 import Progress from "@/components/Progress";
 import Navbar from "@/components/Navbar";
+import Clock from "@/components/Clock";
 import Transitions from "@/components/Transitions";
 import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
@@ -18,6 +19,7 @@ export default function Home() {
       <Loader />
       <Progress />
       <Navbar />
+      <Clock />
       <Hero />
       <Marquee />
       <About />

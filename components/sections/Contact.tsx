@@ -4,7 +4,7 @@ import Chars from "@/components/ui/Chars";
 import Logo from "@/components/ui/Logo";
 import { InstagramIcon, LinkedInIcon } from "@/components/ui/Icons";
 import { EMAIL, LINKS } from "@/lib/data";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, smoothTo } from "@/lib/gsap";
 
 const TILE = ["var(--sand)", "var(--mint)", "var(--blue)"];
 const handle = (u: string) => u.replace(/\/$/, "").split("/").pop();
@@ -74,7 +74,7 @@ export default function Contact() {
         <span>© 2026 Billy Andreas</span>
         <span>Jakarta{time && `, ${time} WIB`}</span>
         <span>Cretivox Internship Experience S2 Batch 6</span>
-        <button type="button" className="up" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Kembali ke atas ↑</button>
+        <button type="button" className="up" onClick={() => smoothTo("#top")}>Kembali ke atas ↑</button>
       </footer>
     </section>
   );

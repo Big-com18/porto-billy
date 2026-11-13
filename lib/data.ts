@@ -84,6 +84,7 @@ const FEATURED: Showcase[] = [
   { name: "KasbonKu", repo: "sistem-kasbon", lang: "CSS", desc: "Manajemen kasbon dan arus kas, lengkap dengan backend dan schema database.", featured: true, live: "https://sistem-kasbon.vercel.app/" },
   { name: "Backlogify", repo: "Backlogify", lang: "Python", desc: "Aplikasi Streamlit untuk analisis backlog dan keputusan pembelian.", featured: true, live: "" /* isi URL Streamlit */ },
   { name: "Game", repo: "game", lang: "JavaScript", desc: "Game kecil berbasis JavaScript.", featured: true, live: "" /* isi URL game */ },
+  { name: "Mahreen Indonesia", repo: "mahreen_indonesia", lang: "TypeScript", desc: "Project website Mahreen Indonesia berbasis TypeScript.", featured: true, live: "" /* isi URL deploy kalau ada */ },
 ];
 
 const OTHER_DESC: Record<string, string> = {

@@ -5,7 +5,7 @@ import Logo from "@/components/ui/Logo";
 import { FRAMEWORKS } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-const BG = FRAMEWORKS.map((f) => f.n.toUpperCase());
+const BG = Array.from({ length: 4 }, () => FRAMEWORKS).flat();
 
 /** Panel akordeon. Berganti otomatis tiap beberapa detik; arahkan kursor atau tap untuk memilih sendiri. */
 export default function Frameworks() {
@@ -42,8 +42,8 @@ export default function Frameworks() {
   return (
     <section id="frameworks" className="stack" data-stack ref={root}>
       <div className="fw-bg" aria-hidden="true">
-        <div className="row out r1">{[...BG, ...BG].map((t, i) => <span key={i}>{t}</span>)}</div>
-        <div className="row out r2">{[...BG, ...BG].reverse().map((t, i) => <span key={i}>{t}</span>)}</div>
+        <div className="lrow r1">{BG.map((f, i) => <span className="fwl" key={i}><Logo n={f.l} size={120} /></span>)}</div>
+        <div className="lrow r2">{BG.map((f, i) => <span className="fwl" key={i}><Logo n={f.l} size={80} /></span>)}</div>
       </div>
       <h2 className="fw-title"><span className="line"><Chars text="Framework" /></span><span className="line"><Chars text="jagoan saya" /></span></h2>
       <p className="lead">Tes ini mengutamakan Next.js, jadi website ini dibangun dengan Next.js dan GSAP. Panel berganti sendiri, atau arahkan kursor untuk memilih.</p>
