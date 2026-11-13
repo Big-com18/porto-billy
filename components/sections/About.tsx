@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Logo from "@/components/ui/Logo";
 import { ABOUT, FRAMEWORKS, PROJECTS, REPOS, SKILLS, STEPS, STICKERS, STACK } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -13,14 +13,6 @@ const RING_B = LOGOS.slice(8);
 
 export default function About() {
   const root = useRef<HTMLElement>(null);
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    const f = () => setTime(new Intl.DateTimeFormat("id-ID", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Jakarta" }).format(new Date()).replace(".", ":"));
-    f();
-    const t = window.setInterval(f, 15000);
-    return () => window.clearInterval(t);
-  }, []);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -70,9 +62,9 @@ export default function About() {
         </div>
 
         <div className="info-grid">
-          <div className="info clock spot">
-            <small><i className="live" />Terbuka untuk magang</small>
-            <div><b className="time">{time || "--:--"}</b><span>Jakarta · WIB</span></div>
+          <div className="info goal spot">
+            <small><i className="live" />Sedang mengincar</small>
+            <div><b>Magang Front-End</b><span>Cretivox · Season II Batch 6</span></div>
           </div>
           <div className="info edu spot"><small>{edu[0]}</small><div><b>{edu[1]}</b><span>{edu[2]}</span></div></div>
           <div className="info exp spot wide"><small>{exp[0]}</small><div><b>{exp[1]}</b><span>{exp[2]}</span></div></div>

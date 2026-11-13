@@ -65,13 +65,13 @@ export default function Repos() {
   return (
     <section id="repos" className="stack" data-stack ref={root}>
       <h2 className="repos-title"><span className="line"><Chars text="Showcase kode" /></span><span className="line"><Chars text="dan karya saya" /></span></h2>
-      <p className="lead">Empat project unggulan di depan, lalu repo lainnya. Pilih salah satu untuk melihat previewnya.</p>
+      <p className="lead">Lima project unggulan di depan, lalu repo lainnya. Pilih salah satu untuk melihat previewnya.</p>
 
       <div className={`sc${auto ? " auto" : ""}`}>
         <ol className="sc-list">
           {SHOWCASE.map((p, k) => (
             <Fragment key={p.repo}>
-              {k === 4 && <li className="sc-sep" aria-hidden="true">Repo lainnya</li>}
+              {!p.featured && SHOWCASE[k - 1]?.featured && <li className="sc-sep" aria-hidden="true">Repo lainnya</li>}
               <li>
                 <button type="button" className={k === i ? "on" : ""} style={{ "--c": LANG_COLOR[p.lang] } as React.CSSProperties} onClick={() => pick(k)} aria-current={k === i}>
                   <span className="n">{String(k + 1).padStart(2, "0")}</span>
