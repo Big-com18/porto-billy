@@ -19,8 +19,8 @@ export function useSession(): Session | null {
 export async function login(identifier: string, password: string): Promise<Session> {
   const res = await fetch("/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ identifier, password }) });
   const data = (await res.json().catch(() => ({}))) as Partial<Session> & { message?: string };
-  if (!res.ok || !data.token) throw new Error(data.message || "Login gagal. Periksa email dan password.");
-  const session: Session = { token: data.token, name: data.name || identifier.split("@")[0], identifier };
+  if (!res.ok || !data.token) throw new Error(data.message || "Login gagal. Periksa username dan password.");
+  const session: Session = { token: data.token, name: data.name || identifier, identifier };
   localStorage.setItem(KEY, JSON.stringify(session));
   window.dispatchEvent(new Event("auth:change"));
   return session;
