@@ -5,9 +5,12 @@ import { NextResponse } from "next/server";
  * Lewat server supaya tidak kena CORS dan URL API tidak tersebar di kode klien.
  * Atur lewat .env.local (lihat .env.example).
  */
-const BASE = process.env.API_URL;
-const PATH = process.env.LOGIN_PATH ?? "/login";
-const ID_FIELD = process.env.LOGIN_FIELD ?? "email";
+// Default = API dari soal (Login API Intern: POST https://dummyjson.com/user/login, body username + password).
+// Bisa ditimpa lewat .env.local (bukan .env.example, file itu tidak dibaca Next.js).
+const BASE = process.env.API_URL ?? "https://dummyjson.com";
+const rawPath = process.env.LOGIN_PATH ?? "/user/login";
+const PATH = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
+const ID_FIELD = process.env.LOGIN_FIELD ?? "username";
 const PW_FIELD = process.env.LOGIN_PASSWORD_FIELD ?? "password";
 
 type Obj = Record<string, unknown>;
@@ -25,13 +28,12 @@ function dig(res: unknown, keys: string[]): string | undefined {
 }
 
 export async function POST(req: Request) {
-  if (!BASE) return NextResponse.json({ message: "API_URL belum diatur di .env.local" }, { status: 500 });
   const { identifier, password } = (await req.json().catch(() => ({}))) as { identifier?: string; password?: string };
-  if (!identifier || !password) return NextResponse.json({ message: "Email dan password wajib diisi." }, { status: 400 });
+  if (!identifier || !password) return NextResponse.json({ message: "Username dan password wajib diisi." }, { status: 400 });
 
   let upstream: Response;
   try {
-    upstream = await fetch(BASE.replace(/\/$/, "") + PATH, {
+    upstream = await fetch(new URL(PATH, BASE).toString(), {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({ [ID_FIELD]: identifier, [PW_FIELD]: password }),
@@ -45,9 +47,10 @@ export async function POST(req: Request) {
   let data: unknown;
   try { data = JSON.parse(text); } catch { data = { message: text.slice(0, 160) }; }
 
-  if (!upstream.ok) return NextResponse.json({ message: dig(data, ["message", "error", "msg"]) ?? "Email atau password salah." }, { status: upstream.status });
+  if (!upstream.ok) return NextResponse.json({ message: dig(data, ["message", "error", "msg"]) ?? "Username atau password salah." }, { status: upstream.status });
 
   const token = dig(data, ["token", "accessToken", "access_token", "jwt"]);
   if (!token) return NextResponse.json({ message: "Login berhasil, tapi token tidak ditemukan di respons API." }, { status: 502 });
-  return NextResponse.json({ token, name: dig(data, ["name", "fullName", "full_name", "username"]) });
+  const full = [dig(data, ["firstName", "first_name"]), dig(data, ["lastName", "last_name"])].filter(Boolean).join(" ");
+  return NextResponse.json({ token, name: full || dig(data, ["name", "fullName", "full_name", "username"]) });
 }

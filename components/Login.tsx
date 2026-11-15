@@ -61,7 +61,7 @@ export default function Login() {
               <form onSubmit={submit}>
                 <h3 id="login-title">Masuk</h3>
                 <p className="sub">Login dengan akun kamu untuk disapa langsung di website ini.</p>
-                <div className="field"><label htmlFor="em">Email</label><input id="em" ref={first} type="text" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required /></div>
+                <div className="field"><label htmlFor="em">Username</label><input id="em" ref={first} type="text" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required /></div>
                 <div className="field"><label htmlFor="pw">Password</label>
                   <div className="pw"><input id="pw" type={show ? "text" : "password"} autoComplete="current-password" value={pw} onChange={(e) => setPw(e.target.value)} required />
                     <button type="button" onClick={() => setShow(!show)}>{show ? "Sembunyikan" : "Lihat"}</button></div>
