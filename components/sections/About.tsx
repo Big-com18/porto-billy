@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { Satellite, Sparkles } from "@/components/space/Art";
 import Logo from "@/components/ui/Logo";
 import { ABOUT, FRAMEWORKS, PROJECTS, REPOS, SKILLS, STEPS, STICKERS, STACK } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -46,7 +47,9 @@ export default function About() {
 
   const edu = STEPS[1], exp = STEPS[2];
   return (
-    <section className="about" id="about" ref={root}>
+    <section className="about" id="about" data-wipe="circle" ref={root}>
+      <Sparkles n={18} seed={3} />
+      <Satellite par={0.7} style={{ right: "7vw", top: "9vh", width: "clamp(110px,12vw,190px)" }} />
       <i className="fl fl1" aria-hidden="true" /><i className="fl fl2" aria-hidden="true" /><i className="fl fl3" aria-hidden="true" />
       <p className="t">{ABOUT.split(" ").map((w, i) => <span className="w" key={i}>{w}</span>)}</p>
       <div className="facts">{STICKERS.map((s) => <span key={s}>{s}</span>)}</div>

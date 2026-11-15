@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Chars from "@/components/ui/Chars";
+import { Astronaut, Comet, Sparkles } from "@/components/space/Art";
 import Logo from "@/components/ui/Logo";
 import { InstagramIcon, LinkedInIcon } from "@/components/ui/Icons";
 import { EMAIL, LINKS } from "@/lib/data";
@@ -50,7 +51,11 @@ export default function Contact() {
   }, { scope: root });
 
   return (
-    <section className="contact stack" id="contact" data-stack ref={root}>
+    <section className="contact" id="contact" data-wipe="right" ref={root}>
+      <Sparkles n={18} seed={9} />
+      <div className="ct-moon" aria-hidden="true" />
+      <Astronaut par={0.4} style={{ right: "9vw", top: "13vh", width: "clamp(130px,14vw,230px)" }} />
+      <Comet style={{ right: "3vw", top: "5vh", color: "#fff" }} />
       <p className="lead">Punya brief, kolaborasi, atau mau ngobrol soal magang? Kirim saja, saya balas secepatnya.</p>
       <h2><span className="line"><Chars text="Ayo ngobrol." /></span></h2>
 

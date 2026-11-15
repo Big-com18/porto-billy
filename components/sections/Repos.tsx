@@ -1,5 +1,6 @@
 "use client";
 import { Fragment, useEffect, useRef, useState } from "react";
+import { Comet, Planet } from "@/components/space/Art";
 import Chars from "@/components/ui/Chars";
 import { GH_USER, LANG_COLOR, SHOWCASE } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -63,7 +64,9 @@ export default function Repos() {
   }, { scope: root, dependencies: [i, mode], revertOnUpdate: false });
 
   return (
-    <section id="repos" className="stack" data-stack ref={root}>
+    <section id="repos" data-wipe="circle" ref={root}>
+      <Planet className="art-back" c="#b8a070" ring moon par={0.3} size="clamp(220px,30vw,460px)" style={{ right: "-6vw", bottom: "-6vw" }} />
+      <Comet style={{ right: "6vw", top: "5vh", color: "#fff" }} />
       <h2 className="repos-title"><span className="line"><Chars text="Showcase kode" /></span><span className="line"><Chars text="dan karya saya" /></span></h2>
       <p className="lead">Lima project unggulan di depan, lalu repo lainnya. Pilih salah satu untuk melihat previewnya.</p>
 

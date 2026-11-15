@@ -1,0 +1,83 @@
+/* ───────── Tema luar angkasa di atas desain pastel + hitam ───────── */
+.sp-stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* section gelap sedikit tembus pandang: bintang di belakang tetap terlihat samar */
+.hero{background:transparent}
+#frameworks,#projects,#repos,.contact{background:rgba(10,10,16,.55)}
+#projects{border-radius:0}
+
+/* roket */
+.ship{position:relative;display:inline-block;line-height:0}
+.flame{position:absolute;right:100%;top:50%;width:20px;height:7px;margin:-3.5px -4px 0 0;border-radius:50%;background:linear-gradient(270deg,var(--sand),var(--rose),transparent);transform-origin:right center;transform:scaleX(var(--fl,.6))}
+.trk-ship{position:absolute;left:50%;top:calc(var(--sp,0)*100%);translate:-50% -50%;rotate:90deg;pointer-events:none}
+.trk-ship .ship svg{width:28px;height:14px}
+.trk-ship .flame{width:12px;height:5px}
+.run{left:2px;width:auto;height:auto;margin:0;border-radius:0;background:none;box-shadow:none;translate:-50% -50%;rotate:90deg}
+.run .ship svg{width:38px;height:19px}
+
+/* planet di hero */
+.hero-planet{position:absolute;right:-7vw;top:20vh;width:min(40vw,580px);aspect-ratio:1;z-index:1;pointer-events:none;isolation:isolate;animation:pfloat 14s ease-in-out infinite alternate}
+.hero-planet i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.55),transparent 38%),repeating-linear-gradient(172deg,var(--lav) 0 9%,var(--rose) 9% 15%,var(--blue) 15% 24%,var(--lav) 24% 30%);box-shadow:inset -50px -40px 100px rgba(5,5,8,.75),0 0 130px rgba(197,189,235,.25)}
+.hero-planet::before,.hero-planet::after{content:"";position:absolute;left:-22%;right:-22%;top:38%;height:26%;border-radius:50%;border:6px solid rgba(236,223,181,.5);transform:rotate(-14deg)}
+.hero-planet::before{z-index:-1}
+.hero-planet::after{clip-path:inset(50% 0 0 0)}
+@keyframes pfloat{to{transform:translate(-2vw,3vh) rotate(4deg)}}
+@media(max-width:700px){.hero-planet{right:-26vw;top:16vh;width:72vw;opacity:.7}}
+
+#skills,#foto,#journey{isolation:isolate}
+
+
+
+/* ───────── Ilustrasi luar angkasa ───────── */
+.art{position:absolute!important;z-index:2!important;pointer-events:none}
+.art-back{z-index:0!important}
+.art-in{animation:afloat 8s ease-in-out infinite alternate}
+.art:nth-of-type(even) .art-in{animation-duration:10s;animation-direction:alternate-reverse}
+.art svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 14px 22px rgba(0,0,0,.3))}
+@keyframes afloat{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-16px) rotate(5deg)}}
+@media(max-width:700px){.art-hero{display:none}}
+
+/* planet bergambar: pita warna, bayangan, cincin, bulan */
+.pln{position:relative;width:var(--sz,200px);aspect-ratio:1;isolation:isolate}
+.pln-s{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.6),transparent 38%),repeating-linear-gradient(172deg,var(--pc) 0 9%,color-mix(in srgb,var(--pc) 70%,#fff) 9% 15%,color-mix(in srgb,var(--pc) 82%,#000) 15% 24%,var(--pc) 24% 30%);box-shadow:inset calc(var(--sz)*-.1) calc(var(--sz)*-.08) calc(var(--sz)*.2) rgba(5,5,8,.55),0 0 calc(var(--sz)*.35) -8px var(--pc)}
+.pln.ringed::before,.pln.ringed::after{content:"";position:absolute;left:-26%;right:-26%;top:38%;height:26%;border-radius:50%;border:calc(var(--sz)*.022) solid rgba(255,255,255,.55);transform:rotate(-14deg)}
+.pln.ringed::before{z-index:-1}
+.pln.ringed::after{clip-path:inset(50% 0 0 0)}
+.pln-moon{position:absolute;inset:-16%;animation:spin 16s linear infinite;pointer-events:none}
+.pln-moon::after{content:"";position:absolute;top:0;left:50%;width:13%;aspect-ratio:1;margin-left:-6.5%;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#d8d5e2);box-shadow:0 0 12px rgba(255,255,255,.5)}
+
+/* bintang kecil berkelip */
+.spks{position:absolute!important;inset:0;z-index:0!important;pointer-events:none;color:var(--ink)}
+#frameworks .spks,#repos .spks,.contact .spks{color:#fff}
+.spk{position:absolute;width:var(--s,12px);aspect-ratio:1;background:currentColor;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:twinkle var(--d,3s) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.1;transform:scale(.6)}to{opacity:.55;transform:scale(1.1)}}
+
+/* komet */
+.comet{position:absolute;z-index:1;width:190px;height:2px;border-radius:2px;pointer-events:none;opacity:0;background:linear-gradient(90deg,currentColor,transparent);animation:comet 11s linear infinite}
+.comet::before{content:"";position:absolute;left:-3px;top:-3px;width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 14px 4px rgba(255,255,255,.5)}
+@keyframes comet{0%{opacity:0;transform:translate(0,0) rotate(-24deg)}4%{opacity:1}24%{opacity:0;transform:translate(-62vw,27vw) rotate(-24deg)}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.art-in,.pln-moon,.spk,.comet,.hero-planet{animation:none}}
+
+/* framework: planet di tiap panel yang terbuka + nebula */
+#frameworks::before{background:radial-gradient(48vw 46vh at 92% 6%,rgba(236,223,181,.2),transparent 70%),radial-gradient(44vw 44vh at 0% 96%,rgba(188,216,198,.18),transparent 70%),radial-gradient(36vw 36vh at 55% 55%,rgba(185,208,232,.12),transparent 70%),radial-gradient(34vw 34vh at 30% 8%,rgba(232,195,210,.12),transparent 70%)}
+.fw-orb{position:absolute!important;right:-9%;bottom:-12%;opacity:0;transform:translateY(40px) scale(.85) rotate(-10deg);transition:opacity .6s .25s,transform 1s .25s var(--ease);pointer-events:none}
+.fw.open .fw-orb{opacity:1;transform:none}
+.fw-orb .pln{--sz:min(40vh,24vw)}
+@media(max-width:800px){.fw-orb .pln{--sz:130px}.fw-orb{right:-4%;bottom:-8%}}
+
+/* proyek: roket di ujung garis progres */
+.rp{position:relative}
+.rp-ship{position:absolute;left:0;top:50%;translate:-50% -50%}
+.rp-ship .ship svg{width:34px;height:17px}
+
+/* perjalanan: tiap pos = planet mini, tujuan = planet bercincin */
+.step::before{width:22px;height:22px;left:-61px;top:8px;background:radial-gradient(circle at 30% 28%,#fff,transparent 46%),var(--sc,var(--sand));border:1.5px solid var(--ink)}
+.step:nth-child(2){--sc:var(--sand)}.step:nth-child(3){--sc:var(--blue)}.step:nth-child(4){--sc:var(--mint)}.step:nth-child(5){--sc:var(--rose)}
+.step.on::before{background:radial-gradient(circle at 30% 28%,#fff,transparent 46%),var(--sc,var(--sand));box-shadow:0 0 0 6px rgba(255,255,255,.55)}
+.jw-goal{display:flex;align-items:center;gap:36px;padding:2vh 0 0}
+.jw-goal small{display:block;font-weight:700;color:rgba(9,9,11,.6)}
+.jw-goal b{display:block;font-family:var(--font-display),Georgia,serif;font-weight:400;font-size:clamp(2.4rem,5vw,4.4rem);line-height:1;letter-spacing:-.03em}
+.jw-goal span{font-weight:600;color:rgba(9,9,11,.7)}
+
+/* kontak: permukaan bulan */
+.ct-moon{position:absolute!important;z-index:0!important;left:50%;bottom:-78vw;width:100vw;translate:-50% 0;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 4%,#f6ecd0,var(--sand) 9%,#9b9078 30%,#27231b 58%,#07070a 78%);box-shadow:0 0 120px rgba(236,223,181,.2);pointer-events:none}

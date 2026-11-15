@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { Planet, Sparkles } from "@/components/space/Art";
 import Chars from "@/components/ui/Chars";
 import { STICKERS } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -63,7 +64,9 @@ export default function Photo() {
   const pick = (i: number) => { setAuto(false); setView(i); };
 
   return (
-    <section id="foto" className="stack photo" data-stack ref={root}>
+    <section id="foto" data-wipe="right" ref={root}>
+      <Sparkles n={16} seed={7} />
+      <Planet c="#7fa7d4" ring moon par={0.6} size="clamp(90px,11vw,170px)" style={{ right: "6vw", top: "8vh" }} />
       <h2 className="photo-title"><span className="line"><Chars text="Wajah di balik" /></span><span className="line"><Chars text="kode saya" /></span></h2>
 
       <div className="ph-grid">
