@@ -2,7 +2,8 @@ import Loader from "@/components/Loader";
 import Progress from "@/components/Progress";
 import Navbar from "@/components/Navbar";
 import Clock from "@/components/Clock";
-import Transitions from "@/components/Transitions";
+import Orbit from "@/components/Orbit";
+import Stars from "@/components/space/Stars";
 import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
 import About from "@/components/sections/About";
@@ -17,6 +18,7 @@ import Contact from "@/components/sections/Contact";
 export default function Home() {
   return (
     <main>
+      <Stars />
       <Loader />
       <Progress />
       <Navbar />
@@ -27,11 +29,11 @@ export default function Home() {
       <Photo />
       <Frameworks />
       <Skills />
-      <div className="stackwrap" data-stack><Projects /></div>
+      <div data-wipe="zoom"><Projects /></div>
       <Journey />
       <Repos />
       <Contact />
-      <Transitions />
+      <Orbit />
     </main>
   );
 }

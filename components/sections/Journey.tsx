@@ -1,6 +1,8 @@
 "use client";
 import { useRef } from "react";
 import Chars from "@/components/ui/Chars";
+import { Planet, Sparkles } from "@/components/space/Art";
+import Ship from "@/components/space/Ship";
 import { STEPS } from "@/lib/data";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
@@ -25,13 +27,19 @@ export default function Journey() {
   }, { scope: root });
 
   return (
-    <section id="journey" className="stack" data-stack ref={root}>
+    <section id="journey" data-wipe="corner" ref={root}>
+      <Sparkles n={16} seed={11} />
+      <Planet c="#6fb59a" ring par={0.5} size="clamp(90px,11vw,170px)" style={{ right: "5vw", top: "9vh" }} />
       <h2 className="journey-title"><span className="line"><Chars text="Perjalanan" /></span><span className="line"><Chars text="sejauh ini" /></span></h2>
       <div className="jw">
-        <div className="jl"><i /><div className="run" /></div>
+        <div className="jl"><i /><div className="run"><Ship /></div></div>
         {STEPS.map(([y, t, d]) => (
           <div className="step" key={t}><small>{y}</small><h3>{t}</h3><p>{d}</p></div>
         ))}
+        <div className="jw-goal">
+          <div className="pln ringed" style={{ "--pc": "#8a6fb0", "--sz": "clamp(90px,10vw,150px)" } as React.CSSProperties}><i className="pln-s" /><i className="pln-moon" /></div>
+          <div><small>Tujuan berikutnya</small><b>Cretivox</b><span>Season II · Batch 6</span></div>
+        </div>
       </div>
     </section>
   );

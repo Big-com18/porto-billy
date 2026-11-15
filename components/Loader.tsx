@@ -22,7 +22,7 @@ export default function Loader() {
 
   return (
     <div className="loader" ref={root}>
-      <small>Dream On.</small>
+      <small>Menuju orbit</small>
       <span><span ref={num}>0</span>%</span>
     </div>
   );

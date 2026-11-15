@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import Ship from "@/components/space/Ship";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 const STOPS: [string, string][] = [
@@ -20,8 +21,9 @@ type Mode = "arrow" | "link" | "drag" | "text" | "busy";
  * Trek lari di sisi kanan (terisi sesuai scroll) + kursor buatan sendiri:
  * panah pastel dengan label nama yang menyusul di belakangnya. Kursor bawaan browser disembunyikan.
  */
-export default function Progress() {
+export default function Progress({ track = true }: { track?: boolean }) {
   const fill = useRef<HTMLElement>(null);
+  const trk = useRef<HTMLDivElement>(null);
   const label = useRef<HTMLElement>(null);
   const cur = useRef<HTMLDivElement>(null);
   const art = useRef<HTMLDivElement>(null);
@@ -35,7 +37,8 @@ export default function Progress() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.to(fill.current, { scaleY: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } });
+      if (!track) return;
+      gsap.to(fill.current, { scaleY: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3, onUpdate: (s) => trk.current?.style.setProperty("--sp", String(s.progress)) } });
       STOPS.forEach(([id, name]) => {
         ScrollTrigger.create({
           trigger: id, start: "top 55%", end: "bottom 55%",
@@ -124,7 +127,7 @@ export default function Progress() {
 
   return (
     <>
-      <div className="track" aria-hidden="true"><i ref={fill} /><b ref={label}>Start</b></div>
+      {track && <div className="track" ref={trk} aria-hidden="true"><i ref={fill} /><b ref={label}>Start</b><span className="trk-ship"><Ship /></span></div>}
 
       <div className="cur" ref={cur} aria-hidden="true">
         <div className="cur-a" ref={art}>

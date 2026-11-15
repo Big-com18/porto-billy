@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { Astronaut, Comet } from "@/components/space/Art";
 import Chars from "@/components/ui/Chars";
 import Logo from "@/components/ui/Logo";
 import { FRAMEWORKS } from "@/lib/data";
@@ -57,6 +58,10 @@ export default function Hero() {
   return (
     <header className="hero" id="top" ref={root}>
       <div className="orbs" aria-hidden="true"><i className="orb o1" /><i className="orb o2" /><i className="orb o3" /><i className="glow" /></div>
+      <div className="hero-planet" aria-hidden="true"><i /></div>
+      <Astronaut className="art-hero" par={0.5} style={{ right: "31vw", top: "12vh", width: "clamp(120px,13vw,210px)" }} />
+      <Comet style={{ right: "2vw", top: "9vh", color: "#fff" }} />
+      <Comet style={{ right: "34vw", top: "3vh", color: "#fff", animationDelay: "5.5s" }} />
       <div className="stickers">
         {FRAMEWORKS.map((f, i) => (
           <div className="stk" key={f.n} style={{ left: `${POS[i][0]}%`, top: `${POS[i][1]}%` }}>

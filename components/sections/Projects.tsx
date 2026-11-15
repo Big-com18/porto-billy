@@ -1,6 +1,8 @@
 "use client";
 import { useRef } from "react";
+import { Comet, Planet } from "@/components/space/Art";
 import Chars from "@/components/ui/Chars";
+import Ship from "@/components/space/Ship";
 import { PROJECTS, type Project } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 
@@ -31,7 +33,9 @@ export default function Projects() {
     mm.add("(min-width: 801px) and (prefers-reduced-motion: no-preference)", () => {
       const rail = root.current!.querySelector<HTMLElement>(".rail")!;
       const dist = () => rail.scrollWidth - innerWidth + innerWidth * 0.06;
-      gsap.to(".rp i", { scaleX: 1, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: () => "+=" + dist(), scrub: true, invalidateOnRefresh: true } });
+      const st = { trigger: root.current, start: "top top", end: () => "+=" + dist(), scrub: true, invalidateOnRefresh: true };
+      gsap.to(".rp i", { scaleX: 1, ease: "none", scrollTrigger: st });
+      gsap.to(".rp-ship", { left: "100%", ease: "none", scrollTrigger: { ...st } });
     });
     // kartu miring mengikuti kursor
     mm.add("(hover: hover) and (prefers-reduced-motion: no-preference)", () => {
@@ -53,10 +57,12 @@ export default function Projects() {
 
   return (
     <section id="projects" ref={root}>
+      <Planet c="#8a97d0" ring moon par={0.4} size="clamp(100px,12vw,190px)" style={{ right: "7vw", top: "11vh" }} />
+      <Comet style={{ right: "4vw", top: "6vh", color: "#fff" }} />
       <h2><span className="line"><Chars text="Hasil kerja" /></span></h2>
       <p className="lead">Project kuliah dan pribadi. Scroll ke bawah untuk berjalan ke kanan.</p>
       <div className="rail">{PROJECTS.map((p) => <Card key={p.n} p={p} />)}</div>
-      <div className="rp" aria-hidden="true"><i /></div>
+      <div className="rp" aria-hidden="true"><i /><span className="rp-ship"><Ship /></span></div>
     </section>
   );
 }

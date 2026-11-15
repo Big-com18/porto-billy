@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Chars from "@/components/ui/Chars";
 import Logo from "@/components/ui/Logo";
+import { Comet, Satellite } from "@/components/space/Art";
 import { FRAMEWORKS } from "@/lib/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 
@@ -40,11 +41,13 @@ export default function Frameworks() {
   }, { scope: root });
 
   return (
-    <section id="frameworks" className="stack" data-stack ref={root}>
+    <section id="frameworks" data-wipe="left" ref={root}>
       <div className="fw-bg" aria-hidden="true">
         <div className="lrow r1">{BG.map((f, i) => <span className="fwl" key={i}><Logo n={f.l} size={120} /></span>)}</div>
         <div className="lrow r2">{BG.map((f, i) => <span className="fwl" key={i}><Logo n={f.l} size={80} /></span>)}</div>
       </div>
+      <Satellite par={0.6} style={{ right: "7vw", top: "13vh", width: "clamp(110px,12vw,190px)" }} />
+      <Comet style={{ right: "3vw", top: "7vh", color: "#fff" }} />
       <h2 className="fw-title"><span className="line"><Chars text="Framework" /></span><span className="line"><Chars text="jagoan saya" /></span></h2>
       <p className="lead">Tes ini mengutamakan Next.js, jadi website ini dibangun dengan Next.js dan GSAP. Panel berganti sendiri, atau arahkan kursor untuk memilih.</p>
       <div className="fw-list" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
@@ -57,7 +60,9 @@ export default function Frameworks() {
               <span className="fw-name">{f.n}</span>
               <span className="fw-tags">{f.tags.map((t) => <i key={t}>{t}</i>)}</span>
             </span>
-            <span className="fw-ghost" aria-hidden="true"><Logo n={f.l} size={400} /></span>
+            <span className="fw-orb" aria-hidden="true">
+              <span className={`pln${i % 2 === 0 ? " ringed" : ""}`} style={{ "--pc": `color-mix(in srgb, ${f.c} 58%, #1a1a22)` } as React.CSSProperties}><i className="pln-s" /><i className="pln-moon" /></span>
+            </span>
             <span className="fw-i" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
           </button>
         ))}

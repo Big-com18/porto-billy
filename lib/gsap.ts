@@ -33,3 +33,9 @@ export function smoothTo(hash: string): boolean {
   history.replaceState(null, "", hash === "#top" ? window.location.pathname : hash);
   return true;
 }
+
+/** Scroll halus ke posisi y (px). Dipakai navigasi dunia horizontal. */
+export function scrollToY(y: number, duration = 1.6) {
+  if (lenis) lenis.scrollTo(y, { duration, easing: (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2) });
+  else window.scrollTo({ top: y });
+}
