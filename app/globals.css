@@ -37,23 +37,19 @@ h2{font-size:clamp(3.2rem,9vw,8.5rem);letter-spacing:-.03em;line-height:.92;marg
 .spot:hover::after{opacity:1}
 
 /* kursor + trek progres */
-/* kursor buatan sendiri: panah pastel + label nama yang menyusul. Kursor bawaan disembunyikan hanya kalau kursor kustom aktif. */
+/* kursor bulan: bulan kecil + debu bintang yang menyusul. Kursor bawaan disembunyikan hanya kalau kursor bulan aktif. */
 html.has-cursor,html.has-cursor *{cursor:none!important}
-.cur,.cur-tag,.cur-rip{position:fixed;top:0;left:0;pointer-events:none;opacity:0}
-.cur{z-index:131;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
-.cur svg{display:block;margin:-3px 0 0 -3px}
-.cur-a{transform-origin:3px 3px}
-.cur-i{position:absolute;left:0;top:0;opacity:0}
-.cur-b{position:absolute;left:0;top:0;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--ink);border:1.5px solid var(--ink);font-size:1.05rem;font-weight:700;opacity:0;transform:scale(.4)}
-.cur-b.busy{background:transparent;border-color:rgba(255,255,255,.35);border-top-color:var(--mint);animation:spin .8s linear infinite}
-@keyframes spin{to{rotate:360deg}}
-.cur-i svg{margin:-14px 0 0 -8px}
-.cur-tag{z-index:130;margin:26px 0 0 24px;display:flex;align-items:center;gap:7px;padding:5px 12px 5px 10px;border-radius:99px;background:var(--ink);color:var(--paper);border:1px solid rgba(255,255,255,.2);font-size:.72rem;font-weight:700;white-space:nowrap;box-shadow:0 8px 18px -8px rgba(0,0,0,.6);transition:background .25s,color .25s,border-color .25s}
-.cur-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lav);transition:background .25s}
-.cur-tag.hot{background:var(--mint);color:var(--ink);border-color:transparent}
-.cur-tag.hot::before{background:var(--ink)}
+.cur,.cur-dust,.cur-rip{position:fixed;top:0;left:0;pointer-events:none;opacity:0}
+.cur{z-index:131;filter:drop-shadow(0 0 8px rgba(246,236,208,.55)) drop-shadow(0 3px 6px rgba(0,0,0,.35))}
+.cur-a{position:absolute;left:-16px;top:-16px;width:32px;height:32px}
+.cur-a svg{display:block}
+.cur-i{position:absolute;left:-8px;top:-14px;opacity:0}
+.cur-ring{position:absolute;left:-27px;top:-27px;width:54px;height:54px;border-radius:50%;border:1.5px dashed #fff;mix-blend-mode:difference;opacity:0;animation:spin 9s linear infinite}
+.cur-ring.busy{border-style:solid;border-top-color:transparent;animation-duration:.8s}
+.cur-dust{z-index:129;border-radius:50%;background:#fff;mix-blend-mode:difference}
 .cur-rip{z-index:129;width:56px;height:56px;margin:-28px 0 0 -28px;border:2px solid var(--lav);border-radius:50%}
-@media(hover:none){.cur,.cur-tag,.cur-rip{display:none}}
+@keyframes spin{to{rotate:360deg}}
+@media(hover:none){.cur,.cur-dust,.cur-rip{display:none}}
 .track{position:fixed;right:16px;top:22vh;bottom:22vh;width:3px;border-radius:3px;background:rgba(150,148,165,.3);z-index:60}
 .track i{position:absolute;inset:0;border-radius:3px;background:linear-gradient(var(--rose),var(--lav),var(--blue),var(--mint));transform:scaleY(0);transform-origin:top}
 .track b{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:.74rem;font-weight:600;white-space:nowrap;background:rgba(9,9,11,.82);backdrop-filter:blur(10px);color:var(--paper);border:1px solid var(--line);padding:4px 12px;border-radius:99px}
