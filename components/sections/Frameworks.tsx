@@ -48,7 +48,7 @@ export default function Frameworks() {
       </div>
       <Satellite par={0.6} style={{ right: "7vw", top: "13vh", width: "clamp(110px,12vw,190px)" }} />
       <Comet style={{ right: "3vw", top: "7vh", color: "#fff" }} />
-      <h2 className="fw-title"><span className="line"><Chars text="Framework" /></span><span className="line"><Chars text="jagoan saya" /></span></h2>
+      <h2 className="fw-title"><span className="line"><Chars text="Framework" /></span><span className="line"><Chars text="Yang pernah saya pakai" /></span></h2>
       <p className="lead">Tes ini mengutamakan Next.js, jadi website ini dibangun dengan Next.js dan GSAP. Panel berganti sendiri, atau arahkan kursor untuk memilih.</p>
       <div className="fw-list" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
         {FRAMEWORKS.map((f, i) => (

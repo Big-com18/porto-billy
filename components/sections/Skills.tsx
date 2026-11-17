@@ -30,7 +30,7 @@ export default function Skills() {
       <Sparkles n={20} seed={5} />
       <Planet c="#9a8dd2" ring moon par={0.5} size="clamp(130px,17vw,270px)" style={{ right: "4vw", top: "6vh" }} />
       <Satellite par={0.9} style={{ right: "25vw", top: "21vh", width: "clamp(90px,9vw,150px)" }} />
-      <h2 className="skills-title"><span className="line"><Chars text="Bekal teknologi" /></span><span className="line"><Chars text="yang saya bawa" /></span></h2>
+      <h2 className="skills-title"><span className="line"><Chars text="Bahasa Pemrograman" /></span><span className="line"><Chars text="dan Framework" /></span></h2>
       <p className="lead">{ALL.length} bahasa, framework, dan tools yang pernah saya pakai. Pilih kategori untuk menyorotnya.</p>
 
       <div className="sk-bar" role="tablist" aria-label="Kategori skill">

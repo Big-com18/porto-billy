@@ -30,7 +30,7 @@ export default function Journey() {
     <section id="journey" data-wipe="corner" ref={root}>
       <Sparkles n={16} seed={11} />
       <Planet c="#6fb59a" ring par={0.5} size="clamp(90px,11vw,170px)" style={{ right: "5vw", top: "9vh" }} />
-      <h2 className="journey-title"><span className="line"><Chars text="Perjalanan" /></span><span className="line"><Chars text="sejauh ini" /></span></h2>
+      <h2 className="journey-title"><span className="line"><Chars text="Perjalanan" /></span><span className="line"><Chars text="Saya sejauh ini" /></span></h2>
       <div className="jw">
         <div className="jl"><i /><div className="run"><Ship /></div></div>
         {STEPS.map(([y, t, d]) => (
