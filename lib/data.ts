@@ -18,7 +18,7 @@ export const NAV: [string, string][] = [
 ];
 
 export const ABOUT =
-  "Mahasiswa Ilmu Komputer yang suka bikin web yang rapi, cepat, dan enak dipakai. Dari front-end, database, sampai quality assurance, saya belajar dengan langsung praktik.";
+  "Mahasiswa Ilmu Komputer yang suka bikin web yang rapi, cepat, dan enak dipakai. Dari front-end, database, quality assurance, sampai development ";
 
 export const STICKERS = ["Jakarta, ID", "CS · Universitas Cakrawala", "Front-End + QA"];
 
@@ -63,11 +63,11 @@ export const LANG_COLOR: Record<string, string> = {
 export const FRAMEWORKS: { n: string; l: string; note: string; c: string; tags: string[] }[] = [
   { n: "Next.js", l: "nextjs", note: "Framework utama. Website ini dibangun dengan Next.js dan GSAP.", c: "#ecdfb5", tags: ["App Router", "SSR", "Routing"] },
   { n: "React", l: "react", note: "Komponen, state, dan antarmuka yang interaktif.", c: "#b9d0e8", tags: ["Hooks", "Komponen", "State"] },
+    { n: "Flutter", l: "flutter", note: "Aplikasi mobile lintas platform dengan Dart.", c: "#eccdb6", tags: ["Dart", "Lintas platform"] },
   { n: "Vue", l: "vue", note: "UI reaktif yang ringan dan mudah dibaca.", c: "#bcd8c6", tags: ["Reaktif", "Composition API"] },
+  { n: "Python", l: "python", note: "Bahasa pemrograman yang mudah dibaca dan efisien.", c: "#8fc2e8", tags: ["Scripting", "Data Science"] },
   { n: "Angular", l: "angular", note: "Struktur rapi untuk aplikasi berskala besar.", c: "#e8c3d2", tags: ["TypeScript", "Modular"] },
-  { n: ".NET", l: "dotnet", note: "Aplikasi dan layanan di ekosistem Microsoft.", c: "#c5bdeb", tags: ["C#", "Web API"] },
-  { n: "Flutter", l: "flutter", note: "Aplikasi mobile lintas platform dengan Dart.", c: "#eccdb6", tags: ["Dart", "Lintas platform"] },
-  { n: "Tailwind", l: "tailwindcss", note: "Styling cepat dan konsisten langsung di markup.", c: "#bcd8c6", tags: ["Utility-first", "Responsif"] },
+    { n: ".NET", l: "dotnet", note: "Aplikasi dan layanan di ekosistem Microsoft.", c: "#c5bdeb", tags: ["C#", "Web API"] },
 ];
 
 export const GH_USER = "Big-com18";
